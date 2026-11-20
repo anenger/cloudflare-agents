@@ -1,0 +1,46 @@
+{
+	"name": "web",
+	"version": "0.1.0",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"dev": "next dev --turbo",
+		"build": "next build",
+		"preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+		"deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+		"cf-typegen": "wrangler types --env-interface CloudflareEnv --include-runtime=false cloudflare-env.d.ts",
+		"check": "biome check .",
+		"check:write": "biome check --write .",
+		"typecheck": "tsc --noEmit"
+	},
+	"dependencies": {
+		"@opennextjs/cloudflare": "^1.20.18",
+		"@t3-oss/env-nextjs": "^0.12.0",
+		"@tanstack/react-query": "^5.69.0",
+		"@trpc/client": "^11.0.0",
+		"@trpc/react-query": "^11.0.0",
+		"@trpc/server": "^11.0.0",
+		"agent": "*",
+		"next": "15.5.29",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"server-only": "^0.0.1",
+		"superjson": "^2.2.1",
+		"zod": "^3.24.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^2.2.5",
+		"@tailwindcss/postcss": "^4.0.15",
+		"@types/node": "^20.14.10",
+		"@types/react": "^19.0.0",
+		"@types/react-dom": "^19.0.0",
+		"postcss": "^8.5.3",
+		"tailwindcss": "^4.0.15",
+		"typescript": "^5.8.2",
+		"wrangler": "^4.165.0"
+	},
+	"ct3aMetadata": {
+		"initVersion": "7.40.0"
+	},
+	"packageManager": "npm@11.19.1"
+}

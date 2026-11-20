@@ -1,0 +1,18 @@
+{
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	"name": "interview-coach-web",
+	"main": ".open-next/worker.js",
+	"compatibility_date": "2026-11-01",
+	"compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+	"observability": { "enabled": true },
+	"assets": {
+		"directory": ".open-next/assets",
+		"binding": "ASSETS"
+	},
+	"services": [
+		// Required by OpenNext for caching and revalidation.
+		{ "binding": "WORKER_SELF_REFERENCE", "service": "interview-coach-web" },
+		// The agent Worker (apps/agent): Durable Object agent, Workflow and Workers AI.
+		{ "binding": "AGENT", "service": "interview-coach-agent" }
+	]
+}

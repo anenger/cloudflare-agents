@@ -1,0 +1,17 @@
+{
+	"name": "cf-ai-interview-coach",
+	"private": true,
+	"type": "module",
+	"workspaces": [
+		"apps/*"
+	],
+	"scripts": {
+		"dev:agent": "npm run dev -w agent",
+		"dev:web": "npm run dev -w web",
+		"test": "npm test -w agent",
+		"typecheck": "npm run typecheck -w agent && npm run typecheck -w web"
+	},
+	"engines": {
+		"node": ">=22.12.0"
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"$schema": "../../node_modules/wrangler/config-schema.json",
+	"name": "interview-coach-agent",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-11-01",
+	"compatibility_flags": ["nodejs_compat"],
+	"observability": { "enabled": true },
+
+	// Workers AI: Llama 3.3 70B runs the interview and grades the answers.
+	"ai": { "binding": "AI" },
+
+	// One InterviewCoach Durable Object (Agents SDK) per candidate. It holds
+	// their profile, long-term memory, sessions and transcripts in SQLite.
+	"durable_objects": {
+		"bindings": [{ "name": "InterviewCoach", "class_name": "InterviewCoach" }]
+	},
+	"migrations": [{ "tag": "v1", "new_sqlite_classes": ["InterviewCoach"] }],
+
+	// A durable, multi-step Workflow that grades a finished session.
+	"workflows": [
+		{
+			"name": "grade-session",
+			"binding": "GRADE_SESSION",
+			"class_name": "GradeSessionWorkflow"
+		}
+	]
+}

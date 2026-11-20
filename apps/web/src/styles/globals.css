@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@theme {
+	--font-sans:
+		var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--color-accent-50: oklch(0.98 0.02 60);
+	--color-accent-100: oklch(0.95 0.05 60);
+	--color-accent-500: oklch(0.72 0.17 55);
+	--color-accent-600: oklch(0.65 0.18 50);
+	--color-accent-700: oklch(0.55 0.16 45);
+}
+
+@layer base {
+	body {
+		@apply bg-zinc-50 text-zinc-900 antialiased dark:bg-zinc-950 dark:text-zinc-100;
+	}
+	::selection {
+		@apply bg-accent-100 dark:bg-accent-700/40;
+	}
+}
+
+@utility card {
+	@apply rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900;
+}
+
+@utility btn {
+	@apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2 font-medium text-sm transition disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+@utility btn-primary {
+	@apply btn bg-accent-600 text-white hover:bg-accent-700 focus-visible:outline-2 focus-visible:outline-accent-500 focus-visible:outline-offset-2;
+}
+
+@utility btn-secondary {
+	@apply btn border border-zinc-300 bg-white text-zinc-800 hover:bg-zinc-100 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800;
+}
+
+@utility input {
+	@apply w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-sm outline-none transition placeholder:text-zinc-400 focus:border-accent-500 focus:ring-2 focus:ring-accent-500/30 dark:border-zinc-700 dark:bg-zinc-950;
+}
+
+@utility label {
+	@apply mb-1 block font-medium text-xs text-zinc-500 uppercase tracking-wide dark:text-zinc-400;
+}
